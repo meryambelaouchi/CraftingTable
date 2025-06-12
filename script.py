@@ -4,6 +4,7 @@ import requests
 import time
 from collections import Counter
 
+
 marker_to_item = {
     3: "Stick",
     4: "Coal",
@@ -106,6 +107,14 @@ while True:
                 current_step += 1
                 last_activity_time = time.time()
                 hint_level = 0
+            
+    if current_step >= len(ordered_recipes):
+        if time.time() - last_activity_time > 180:
+            print("🔄 Restarting system: triggering column 10 and resetting state")
+            trigger_column(10)
+            current_step = 0
+            hint_level = 0
+            last_activity_time = time.time()
 
     # show webcam
     cv2.imshow("Crafting Table Camera", frame)
