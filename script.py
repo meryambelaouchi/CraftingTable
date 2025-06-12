@@ -15,13 +15,13 @@ marker_to_item = {
 recipes = {
     (3, 4): 1,             
     (3, 17): 2,            
-    (42, 42, 42): 4        
+    (42, 42, 42, 42, 42): 4        
 }
 
 ordered_recipes = [
     (3, 4),
     (3, 17),
-    (42, 42, 42)
+    (42, 42, 42, 42, 42)
 ]
 
 RESOLUME_HOST = "http://localhost:8080"
@@ -47,8 +47,12 @@ current_step = 0
 last_activity_time = time.time()
 hint_level = 0
 
+
+
 def trigger_column(column):
     url = f"{RESOLUME_HOST}{CLIP_TRIGGER_PATH.format(column=column)}"
+    
+    
     try:
         response = requests.post(url)
         if response.status_code == 200:
@@ -57,6 +61,8 @@ def trigger_column(column):
             print("Trigger failed:", response.status_code, response.text)
     except Exception as e:
         print(" Error triggering Resolume:", e)
+
+trigger_column(10)
 
 def trigger_hint_clip(layer, clip_index):
     url = f"{RESOLUME_HOST}{OVERLAY_TRIGGER_PATH.format(layer=layer, clip_index=clip_index)}"
