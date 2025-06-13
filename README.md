@@ -55,14 +55,19 @@ python main.py
 - Marker ID + Item
 
 3 => Stick
+
 4 => Coal
+
 17 => Cobblestone
+
 42 => Iron Ingot
 
 - Recipe => Result => Resolume Column
 
 Stick + Coal => Torch => 1
+
 Stick + Cobblestone => Lever => 2
+
 5x Iron Ingot => Cart => 4
 
 
